@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order summary - Bloom & Co</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Order summary</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <p><strong>Order ID:</strong> {{ order.id }}</p>
+                <p><strong>Total price:</strong> {{ order.total_price }} €</p>
+                <p><strong>Delivery address:</strong> {{ order.delivery_address }}</p>
+                <p><strong>Delivery aate:</strong> {{ order.delivery_date }}</p>
+                
+                <!-- Gumb za preuzimanje računa -->
+                <a href="{{ url_for('download_invoice') }}" class="btn btn-secondary mt-3">Download invoice</a>
+
+                <!-- Povratak na shop -->
+                <a href="{{ url_for('shop') }}" class="btn btn-primary mt-3">Continue shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

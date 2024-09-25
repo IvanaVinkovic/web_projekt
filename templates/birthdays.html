@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday bouquets - Bloom & Co</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Island+Moments&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Birthday bouquets</h1>
+        <div class="row text-center">
+            {% for product in products %}
+            <div class="col-md-4">
+                <img src="{{ product.image }}" class="img-fluid" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.price }} €</p>
+                <a href="{{ url_for('product_details', product_id=product.id) }}" class="btn btn-primary">View details</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+

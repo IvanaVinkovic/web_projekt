@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Bloom & Co</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Island+Moments&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px; /* Visina mape */
+            width: 100%; /* Širina mape */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-dark-blue" href="{{ url_for('shop') }}">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-dark-blue" href="{{ url_for('subscription') }}">Subscription</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-dark-blue" href="{{ url_for('help') }}">Help</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-dark-blue" href="{{ url_for('login') }}"><i class="fas fa-user"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-dark-blue" href="#"><i class="fas fa-shopping-cart"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <div class="container my-4">
+        <h1>Contact us</h1>
+        <p>If you have any questions or comments, please don't hesitate to reach out to us. We would love to hear from you! You can reach us by email at contact@buketi.hr and phone +385958829309.</p>
+        <p>Our hours of operation are Monday to Sunday, 8:00 AM to 9:00 PM. We look forward to hearing from you!</p>
+        <p>Our address:</p>
+        <p>Varaždinska Cesta 55, 10000, Osijek, Hrvatska</p>
+
+        <!-- Map Section -->
+        <h2>Visit us at our location</h2>
+        <div id="map"></div>
+
+        <!-- Custom Bouquet Request Form -->
+        <h2 class="mt-5">Customize your bouquet</h2>
+
+        <!-- Display flash messages for feedback -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-info">
+                    <ul>
+                    {% for category, message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <p>If you would like to request a custom bouquet, you can upload a picture of what you want and provide a short description.</p>
+        <form method="POST" action="/upload_custom_bouquet" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image">Upload image</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Describe what kind of bouquet you want"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit request</button>
+        </form>
+
+        <!-- Live Chat Section -->
+        <div class="mt-5">
+            <h2>Need help in real-time?</h2>
+            <p>If you want to chat with our team in real-time, click the button below to start a live chat!</p>
+            <a href="{{ url_for('live_chat') }}" class="btn btn-success">Start live chat</a>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([45.5600, 18.6753], 13);  // Lokacija za Osijek
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var marker = L.marker([45.5600, 18.6753]).addTo(map)
+            .bindPopup('Bloom & Co Florist<br>Varaždinska Cesta 55, Osijek.')
+            .openPopup();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
+

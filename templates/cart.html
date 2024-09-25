@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Bloom & Co</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Cart</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Forma za ažuriranje košarice -->
+                <form method="POST" action="{{ url_for('update_cart') }}">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Size</th> <!-- Dodaj kolonu za veličinu -->
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart %}
+                            <tr>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.size }}</td> <!-- Prikaz veličine proizvoda -->
+                                <td>{{ item.price * item.quantity }} €</td>
+                                <td>
+                                    <input type="number" name="quantity_{{ item.id }}" value="{{ item.quantity }}" class="form-control" min="1" required>
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('remove_from_cart', product_id=item.id, size=item.size) }}" class="btn btn-danger btn-sm">Remove</a> <!-- Dodaj veličinu u URL za brisanje -->
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <h3>Total: {{ total_price }} €</h3>
+                    
+                    <!-- Dugme za ažuriranje košarice -->
+                    <button type="submit" class="btn btn-primary">Update cart</button>
+                </form>
+
+                <!-- Forma za dovršetak narudžbe -->
+                <form method="POST" action="{{ url_for('checkout') }}">
+                    <!-- Unos za adresu isporuke -->
+                    <div class="form-group mt-3">
+                        <label for="common_delivery_address">Delivery address</label>
+                        <input type="text" name="common_delivery_address" id="common_delivery_address" class="form-control" required>
+                    </div>
+
+                    <!-- Unos za datum isporuke -->
+                    <div class="form-group">
+                        <label for="delivery_date">Delivery Date</label>
+                        <input type="date" name="delivery_date" id="delivery_date" class="form-control" required>
+                    </div>
+
+                    <!-- Dugme za dovršetak narudžbe -->
+                    <button type="submit" class="btn btn-secondary mt-3">Complete order</button>
+                </form>
+
+            
+            
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

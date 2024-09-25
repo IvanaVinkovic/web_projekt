@@ -1,0 +1,145 @@
+/* Globalne postavke */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Navigacijska traka */
+.navbar {
+    background-color: #343a40;
+    padding: 10px;
+}
+
+.nav-link, .btn-dark-blue {
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+.btn-dark-blue:hover {
+    background-color: #e0e0e0;
+}
+
+/* Hero sekcija */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Visina hero sekcije */
+    background-color: white; /* Bijela pozadina */
+    text-align: center;
+    color: black;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ispravak prikaza logotipa */
+.brand-logo {
+    max-width: 100%; /* Ograničenje širine logotipa */
+    height: auto;
+    margin: auto;
+    padding: 50px 0; /* Dodavanje paddinga za više prostora */
+}
+
+.brand-logo img {
+    max-width: 30%; /* Smještaj slike u centar i smanjivanje */
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Tekst unutar hero sekcije */
+.hero-text {
+    position: relative;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Stil za slike unutar ponuda cvijeća */
+img.img-fluid {
+    margin-bottom: 30px; /* Razmak ispod slika */
+}
+
+/* Stil za gumb "View Details" */
+.btn-primary {
+    margin-top: 20px; /* Razmak iznad gumba */
+    margin-bottom: 40px; /* Razmak ispod gumba */
+    padding: 10px 20px;
+}
+
+/* Feature Section */
+.feature-box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.feature-box {
+    flex: 1 1 200px;
+    max-width: 300px;
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature-box i {
+    color: #2B3E50;
+    margin-bottom: 10px;
+}
+
+.feature-box h4 {
+    font-size: 1.2em;
+    color: #2B3E50;
+}
+
+.feature-box:hover {
+    transform: scale(1.05);
+}
+
+/* Media queries za mobilne uređaje */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-dark-blue {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .hero-section {
+        height: auto;
+        padding: 20px;
+    }
+
+    .brand-logo img {
+        max-width: 80%;
+    }
+
+    .hero-text {
+        font-size: 1em;
+        max-width: 90%;
+    }
+
+    .feature-box {
+        flex: 1 1 100%;
+    }
+}
+
+
+
+
+
+
+
+
