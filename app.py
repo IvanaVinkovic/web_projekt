@@ -11,8 +11,7 @@ from reportlab.pdfgen import canvas
 from io import BytesIO
 from functools import wraps
 
-
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 # Konfiguracija baze podataka (primjer za SQLite)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///baza.db?timeout=60'
@@ -559,5 +558,6 @@ def cart():
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    socketio.run(app, host='0.0.0.0', port=port)
 
