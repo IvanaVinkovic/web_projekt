@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dodaj Proizvod</title>
+    <title>Add product</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-4">Dodaj novi proizvod</h1>
+        <h1 class="mt-4">Add new product</h1>
         <form method="POST" action="/admin/products/add">
             <div class="form-group">
-                <label for="name">Naziv proizvoda</label>
+                <label for="name">Name </label>
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="form-group">
-                <label for="price">Cijena</label>
+                <label for="price">Price</label>
                 <input type="number" step="0.01" class="form-control" id="price" name="price" required>
             </div>
             <div class="form-group">
-                <label for="description">Opis</label>
+                <label for="description">Description</label>
                 <textarea class="form-control" id="description" name="description"></textarea>
             </div>
             <div class="form-group">
-                <label for="image">URL Slike</label>
+                <label for="image">URL</label>
                 <input type="text" class="form-control" id="image" name="image">
             </div>
             <div class="form-group">
-                <label for="category">Kategorija</label>
+                <label for="category">Category</label>
                 <select class="form-control" id="category" name="category" required>
                     <option value="general">General</option>
                     <option value="under_20">Under 20 Euros</option>
@@ -35,7 +35,7 @@
                     <option value="birthdays">Birthdays</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Dodaj proizvod</button>
+            <button type="submit" class="btn btn-primary">Add</button>
         </form>
     </div>
 </body>

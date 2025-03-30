@@ -1,23 +1,23 @@
 <form method="POST">
     <div class="form-group">
-        <label for="name">Ime proizvoda:</label>
+        <label for="name">Name:</label>
         <input type="text" name="name" id="name" class="form-control" value="{{ product.name }}">
     </div>
 
     <div class="form-group">
-        <label for="price">Cijena:</label>
+        <label for="price">Price:</label>
         <input type="number" name="price" id="price" class="form-control" value="{{ product.price }}">
     </div>
 
     <div class="form-group">
-        <label for="description">Opis:</label>
+        <label for="description">Description:</label>
         <textarea name="description" id="description" class="form-control">{{ product.description }}</textarea>
     </div>
 
     <div class="form-group">
-        <label for="image">URL slike:</label>
+        <label for="image">URL:</label>
         <input type="text" name="image" id="image" class="form-control" value="{{ product.image }}">
     </div>
 
-    <button type="submit" class="btn btn-success">Spremi promjene</button>
+    <button type="submit" class="btn btn-success">Save changes</button>
 </form>
